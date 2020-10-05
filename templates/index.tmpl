@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	 	<link rel="stylesheet" href="css/styles.css" type="text/css" media="all">
+	 	<title><?=$title;?></title>
+
+	</head>
+	<body>
+		<header class="header-main">
+			<ul class="header-menu">
+				<li class="header-menu-link">Главная</li>
+				<li class="header-menu-link">Заказ угощений для клиентов</li>
+			</ul>
+		</header>
+		<div class="main-container">
+			{% for item in goods %}
+                <div class="product-container">
+				<a href="item_info.php?{{item.id}}">
+					<img src="../img/items/{{item.img_name}}">
+				</a>
+				<p class="item-name"><a href="item_info.php?{{item.id}}">{{item.name}}</a>
+				</p>
+                <p class="item_price">{{item.descrip}}</p>>
+				<p class="item_price">{{item.ammount}}</p>>
+				<a class="button-cart" href="../models/addToCart.php?{{item.id}}">добавить в заказ</a>
+			</div>
+
+            {% endfor %}
+            <div class="button"><a href="?limit={{count + 5}}" id="show_more">Показать еще</a><a href="index.php">Скрыть все</a></div>
+		</div>
+		<footer class="footer">
+			<p>test footer</p>
+		</footer>
+	</body>
+</html>
